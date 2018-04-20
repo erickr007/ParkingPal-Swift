@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Location" representedClassName=".Location" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String" syncable="YES"/>
+        <attribute name="detailSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="parkingType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="locationSpace" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ParkingSpace" inverseName="spaceLocation" inverseEntity="ParkingSpace" syncable="YES"/>
+    </entity>
+    <entity name="ParkingSpace" representedClassName=".ParkingSpace" syncable="YES" codeGenerationType="class">
+        <attribute name="floor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeIn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timeOut" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="spaceLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="locationSpace" inverseEntity="Location" syncable="YES"/>
+        <relationship name="spaceSuffix" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ParkingSpaceSuffix" inverseName="suffixToSpace" inverseEntity="ParkingSpaceSuffix" syncable="YES"/>
+    </entity>
+    <entity name="ParkingSpaceSuffix" representedClassName=".ParkingSpaceSuffix" parentEntity="ParkingSpace" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="suffixToSpace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ParkingSpace" inverseName="spaceSuffix" inverseEntity="ParkingSpace" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Location" positionX="-45" positionY="0" width="128" height="30"/>
+        <element name="ParkingSpace" positionX="-45" positionY="54" width="128" height="180"/>
+        <element name="ParkingSpaceSuffix" positionX="-27" positionY="81" width="128" height="30"/>
+    </elements>
+</model>
