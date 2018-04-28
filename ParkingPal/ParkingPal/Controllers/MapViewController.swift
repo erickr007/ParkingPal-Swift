@@ -96,6 +96,11 @@ class MapViewController: UIViewController, MapFilterDelegate{
             identifyViewController = segue.destination as? IdentifyViewController
             identifyViewController?.delegate = self
         }
+        else if segue.identifier == "goToMapSetLocation" {
+            let setLocationVC = segue.destination as! SetLocationViewController
+            
+            setLocationVC.currentLocation = selectedLocation
+        }
     }
     
     func closeMenu(){
@@ -158,7 +163,6 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
                 self.view.layoutIfNeeded()
             })
         }
-        //identifyContainer.isHidden = true
     }
     
     func goToLocation() {
@@ -179,7 +183,6 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
                 self.view.layoutIfNeeded()
             })
         }
-        //identifyContainer.isHidden = false
     }
     
 }

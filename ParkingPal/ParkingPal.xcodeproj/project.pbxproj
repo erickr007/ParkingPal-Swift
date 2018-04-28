@@ -11,11 +11,12 @@
 		07080FB8206A260A00A8B4C7 /* ParkingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FB7206A260A00A8B4C7 /* ParkingDetailsViewController.swift */; };
 		07080FBA206A343700A8B4C7 /* ParkingDetailsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FB9206A343700A8B4C7 /* ParkingDetailsTableTableViewController.swift */; };
 		07080FBC206B9BF100A8B4C7 /* IdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FBB206B9BF100A8B4C7 /* IdentifyViewController.swift */; };
-		07080FBE206BF63400A8B4C7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FBD206BF63400A8B4C7 /* HistoryViewController.swift */; };
+		07080FBE206BF63400A8B4C7 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FBD206BF63400A8B4C7 /* HistoryTableViewController.swift */; };
 		07080FC2207EADD300A8B4C7 /* SetLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FC1207EADD300A8B4C7 /* SetLocationViewController.swift */; };
 		07080FC420808B0800A8B4C7 /* SetLocationDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07080FC320808B0800A8B4C7 /* SetLocationDetailsTableViewController.swift */; };
 		07137E3E208E68AE00815FE0 /* SpaceFloorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E3D208E68AE00815FE0 /* SpaceFloorViewController.swift */; };
 		07137E402092116000815FE0 /* SpaceExpirationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E3F2092116000815FE0 /* SpaceExpirationViewController.swift */; };
+		07137E422094B16900815FE0 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E412094B16900815FE0 /* HistoryTableViewCell.swift */; };
 		073E48B32081002100BE3BB9 /* SpaceNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E48B22081002100BE3BB9 /* SpaceNumberViewController.swift */; };
 		073E48B52082185E00BE3BB9 /* SuffixTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E48B42082185E00BE3BB9 /* SuffixTableViewController.swift */; };
 		073E48B72082214100BE3BB9 /* AddSuffixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E48B62082214100BE3BB9 /* AddSuffixViewController.swift */; };
@@ -56,11 +57,12 @@
 		07080FB7206A260A00A8B4C7 /* ParkingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailsViewController.swift; sourceTree = "<group>"; };
 		07080FB9206A343700A8B4C7 /* ParkingDetailsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingDetailsTableTableViewController.swift; sourceTree = "<group>"; };
 		07080FBB206B9BF100A8B4C7 /* IdentifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyViewController.swift; sourceTree = "<group>"; };
-		07080FBD206BF63400A8B4C7 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		07080FBD206BF63400A8B4C7 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		07080FC1207EADD300A8B4C7 /* SetLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationViewController.swift; sourceTree = "<group>"; };
 		07080FC320808B0800A8B4C7 /* SetLocationDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationDetailsTableViewController.swift; sourceTree = "<group>"; };
 		07137E3D208E68AE00815FE0 /* SpaceFloorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFloorViewController.swift; sourceTree = "<group>"; };
 		07137E3F2092116000815FE0 /* SpaceExpirationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceExpirationViewController.swift; sourceTree = "<group>"; };
+		07137E412094B16900815FE0 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		073E48B22081002100BE3BB9 /* SpaceNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNumberViewController.swift; sourceTree = "<group>"; };
 		073E48B42082185E00BE3BB9 /* SuffixTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixTableViewController.swift; sourceTree = "<group>"; };
 		073E48B62082214100BE3BB9 /* AddSuffixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSuffixViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +191,7 @@
 				07080FB7206A260A00A8B4C7 /* ParkingDetailsViewController.swift */,
 				07080FB9206A343700A8B4C7 /* ParkingDetailsTableTableViewController.swift */,
 				07080FBB206B9BF100A8B4C7 /* IdentifyViewController.swift */,
-				07080FBD206BF63400A8B4C7 /* HistoryViewController.swift */,
+				07080FBD206BF63400A8B4C7 /* HistoryTableViewController.swift */,
 				07080FC1207EADD300A8B4C7 /* SetLocationViewController.swift */,
 				07080FC320808B0800A8B4C7 /* SetLocationDetailsTableViewController.swift */,
 				073E48B22081002100BE3BB9 /* SpaceNumberViewController.swift */,
@@ -207,6 +209,7 @@
 			children = (
 				074417F1204D56EA0031F8BF /* LaunchScreen.storyboard */,
 				074417E9204D56EA0031F8BF /* Main.storyboard */,
+				07137E412094B16900815FE0 /* HistoryTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07137E422094B16900815FE0 /* HistoryTableViewCell.swift in Sources */,
 				073E48B52082185E00BE3BB9 /* SuffixTableViewController.swift in Sources */,
 				07080FC2207EADD300A8B4C7 /* SetLocationViewController.swift in Sources */,
 				074417E8204D56EA0031F8BF /* MapViewController.swift in Sources */,
@@ -561,7 +565,7 @@
 				074417EE204D56EA0031F8BF /* ParkingPal.xcdatamodeld in Sources */,
 				07080FBA206A343700A8B4C7 /* ParkingDetailsTableTableViewController.swift in Sources */,
 				074417E6204D56EA0031F8BF /* AppDelegate.swift in Sources */,
-				07080FBE206BF63400A8B4C7 /* HistoryViewController.swift in Sources */,
+				07080FBE206BF63400A8B4C7 /* HistoryTableViewController.swift in Sources */,
 				07080FB8206A260A00A8B4C7 /* ParkingDetailsViewController.swift in Sources */,
 				07080FC420808B0800A8B4C7 /* SetLocationDetailsTableViewController.swift in Sources */,
 				074418442056D5D00031F8BF /* MapFilterViewController.swift in Sources */,

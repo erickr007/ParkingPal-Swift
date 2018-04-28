@@ -42,6 +42,11 @@ class ParkingDetailsViewController: UIViewController, ParkingDetailsTableDelegat
             detailsTableVC = segue.destination as? ParkingDetailsTableTableViewController
             detailsTableVC?.delegate = self
         }
+        else if segue.identifier == "goToDetailsSetLocation"{
+            let setLocationVC = segue.destination as! SetLocationViewController
+            
+            setLocationVC.currentLocation = currentLocation
+        }
     }
     
     

@@ -15,6 +15,7 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var currentLocation: Location? = nil
     var detailsTableVC: SetLocationDetailsTableViewController? = nil
     
     var parkingSpaceName: String? = nil
@@ -64,11 +65,42 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
     }
     
+    func deactivateExistingParking(){
+        //inactivate any active parking spaces prior to adding this space
+        let request: NSFetchRequest<ParkingSpace> = ParkingSpace.fetchRequest()
+        let predicate = NSPredicate(format:"isActive = true")
+        request.predicate = predicate
+        
+        do{
+            let activeParking: [ParkingSpace] = try context.fetch(request)
+            
+            for parking in activeParking {
+                parking.isActive = false
+            }
+            
+            context
+            
+            try context.save()
+        }
+        catch{
+            print("Error deactivating existing parking: \(error)")
+        }
+    }
+    
+    
+    //MARK: UI Actions
+    //*******************
+    
     @IBAction func saveSpaceLocationTouched(_ sender: Any) {
+        deactivateExistingParking()
+        
         let space = ParkingSpace(context: context)
+        
         space.name = parkingSpaceName
         space.timeIn = Date.init()
         space.isActive = true
+        space.spaceLocation = currentLocation
+        
         if let expiration = parkingSpaceExpiration{
                 space.expireTime = expiration
         }
@@ -78,13 +110,14 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
         if let type = selectedType{
                 space.type = Int32(type)
         }
-
-
+        
+        
         do{
+            
             try context.save()
         }
         catch{
-            print("Error save parking space \(error)")
+            print("Error saving parking space \(error)")
         }
         
         self.navigationController?.popViewController(animated: true)

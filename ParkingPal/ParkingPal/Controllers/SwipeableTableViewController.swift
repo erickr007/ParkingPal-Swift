@@ -17,7 +17,7 @@ class SwipeableTableViewController: UITableViewController, SwipeTableViewCellDel
 
     }
     
-    func updateRow(indexPath: IndexPath){ }
+    func deleteRow(indexPath: IndexPath){ }
     
     //MARK: SwipeTableViewCellDelegate Methods
     //*********************************************
@@ -27,7 +27,7 @@ class SwipeableTableViewController: UITableViewController, SwipeTableViewCellDel
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") {
             (action, path) in
-            self.updateRow(indexPath: path)
+            self.deleteRow(indexPath: path)
         }
         
         
@@ -45,7 +45,7 @@ class SwipeableTableViewController: UITableViewController, SwipeTableViewCellDel
     //************************************
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "suffixCell", for: indexPath) as! SwipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "swipeCell", for: indexPath) as! SwipeTableViewCell
         cell.delegate = self
         
         return cell
