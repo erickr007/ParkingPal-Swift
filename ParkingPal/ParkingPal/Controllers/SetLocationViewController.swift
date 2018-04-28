@@ -19,7 +19,7 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     var parkingSpaceName: String? = nil
     var parkingSpaceFloor: String? = nil
-    var parkingSpaceRate: String? = nil
+    var parkingSpaceExpiration: Date? = nil
     var parkingTypeList: [String]? = nil
     var selectedType: Int? = nil
     
@@ -54,26 +54,38 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
                 spaceNumberVC.set(spaceNumber: spaceNumber, suffixes: detailsTableVC?.sourceSuffixList)
             }
         }
+        else if segue.identifier == "goToSelectFloor" {
+            let spaceFloorVC = segue.destination as! SpaceFloorViewController
+            spaceFloorVC.delegate = detailsTableVC
+        }
+        else if segue.identifier == "goToSpaceExpiration" {
+            let spaceExpireVC = segue.destination as! SpaceExpirationViewController
+            spaceExpireVC.delegate = detailsTableVC
+        }
     }
     
     @IBAction func saveSpaceLocationTouched(_ sender: Any) {
-                let space = ParkingSpace(context: context)
-                space.name = parkingSpaceName
-        space.rate = parkingSpaceRate
-        
-                if let floor = parkingSpaceFloor{
-                    space.floor = floor
-                }
-                if let type = selectedType{
-                        space.type = Int32(type)
-                }
-        
-                do{
-                    try context.save()
-                }
-                catch{
-                    print("Error save parking space \(error)")
-                }
+        let space = ParkingSpace(context: context)
+        space.name = parkingSpaceName
+        space.timeIn = Date.init()
+        space.isActive = true
+        if let expiration = parkingSpaceExpiration{
+                space.expireTime = expiration
+        }
+        if let floor = parkingSpaceFloor{
+            space.floor = floor
+        }
+        if let type = selectedType{
+                space.type = Int32(type)
+        }
+
+
+        do{
+            try context.save()
+        }
+        catch{
+            print("Error save parking space \(error)")
+        }
         
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -86,8 +98,16 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
         performSegue(withIdentifier: "goToSpaceName", sender: self)
     }
     
+    func showSelectFloor() {
+        performSegue(withIdentifier: "goToSelectFloor", sender: self)
+    }
+    
+    func showSpaceExpirationInfo() {
+        performSegue(withIdentifier: "goToSpaceExpiration", sender: self)
+    }
+    
     func spaceFloorUpdated(floor: String) {
-        
+        parkingSpaceFloor = floor
     }
     
     func spaceNameUpdated(name: String?) {
@@ -95,16 +115,13 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
 
     }
     
-    func spaceRateUpdated(rate: String) {
-        
+    func spaceExpirationUpdated(expires: Date) {
+        parkingSpaceExpiration = expires
     }
     
     func clearSpaceNumber() {
         //parkingSpaceName = nil
     }
-    
-    //MARK: SpaceInfoDelegate Methods
-    //*********************************
     
     
     

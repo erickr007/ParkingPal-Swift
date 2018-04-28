@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wSM-bG-Bn5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wSM-bG-Bn5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -435,6 +435,8 @@
                     <connections>
                         <outlet property="parkingTypePicker" destination="UiQ-32-UbS" id="HbE-gW-Hhc"/>
                         <segue destination="exQ-RO-IQH" kind="show" identifier="goToSpaceName" id="ttU-pA-I0x"/>
+                        <segue destination="iYq-uj-bmv" kind="show" identifier="goToSelectFloor" id="abl-N2-CI3"/>
+                        <segue destination="KWG-gP-6rm" kind="show" identifier="goToSpaceExpiration" id="QQ6-jq-Yy3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9p-G5-F65" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -508,7 +510,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY7-P6-iUz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expire Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY7-P6-iUz">
                                                     <rect key="frame" x="16" y="11" width="101" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -534,14 +536,14 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="spaceExpirationLabel" destination="wzR-bm-KvV" id="sna-Ms-Nnz"/>
                         <outlet property="spaceFloorLabel" destination="7UP-kS-msB" id="l5R-7K-SuA"/>
                         <outlet property="spaceNameLabel" destination="tEG-DI-1nm" id="DRT-qJ-PRu"/>
-                        <outlet property="spaceRateLabel" destination="wzR-bm-KvV" id="bCf-Bm-xrJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yze-tG-2QK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037.5999999999999" y="1472.5637181409297"/>
+            <point key="canvasLocation" x="118" y="1168"/>
         </scene>
         <!--Number Info-->
         <scene sceneID="hpH-r7-aHO">
@@ -635,6 +637,157 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQm-7Z-7cJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1828" y="1482.9085457271365"/>
+        </scene>
+        <!--Space Expiration View Controller-->
+        <scene sceneID="fFW-Ef-UDb">
+            <objects>
+                <viewController id="KWG-gP-6rm" customClass="SpaceExpirationViewController" customModule="ParkingPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nT0-8o-1vn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JUu-vD-Bio">
+                                <rect key="frame" x="0.0" y="154" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Sn9-74-cGb"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="546443977.78814805">
+                                    <!--2018-04-26 13:59:37 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="expireDateChanged:" destination="KWG-gP-6rm" eventType="valueChanged" id="Bu5-p4-mNB"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fa-BI-4WV">
+                                <rect key="frame" x="0.0" y="119" width="375" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kgB-By-ef7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fK-YP-1ar">
+                                <rect key="frame" x="0.0" y="514" width="375" height="45"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ClR-kZ-EDQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTouched:" destination="KWG-gP-6rm" eventType="touchUpInside" id="Avi-Hl-M5J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSQ-4A-goT">
+                                <rect key="frame" x="0.0" y="579" width="375" height="45"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="wKU-xT-ByQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearTouched:" destination="KWG-gP-6rm" eventType="touchUpInside" id="0HA-oE-azD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JSQ-4A-goT" firstAttribute="top" secondItem="8fK-YP-1ar" secondAttribute="bottom" constant="20" id="0Bi-Fo-UuA"/>
+                            <constraint firstItem="Y5y-Kw-w9d" firstAttribute="trailing" secondItem="JSQ-4A-goT" secondAttribute="trailing" id="6fQ-SV-nHq"/>
+                            <constraint firstItem="7Fa-BI-4WV" firstAttribute="leading" secondItem="Y5y-Kw-w9d" secondAttribute="leading" id="9ca-oY-t6y"/>
+                            <constraint firstItem="8fK-YP-1ar" firstAttribute="leading" secondItem="Y5y-Kw-w9d" secondAttribute="leading" id="HtV-8f-tsF"/>
+                            <constraint firstItem="Y5y-Kw-w9d" firstAttribute="trailing" secondItem="8fK-YP-1ar" secondAttribute="trailing" id="ISB-ru-2hw"/>
+                            <constraint firstItem="JSQ-4A-goT" firstAttribute="leading" secondItem="Y5y-Kw-w9d" secondAttribute="leading" id="VNU-Qx-noq"/>
+                            <constraint firstItem="JUu-vD-Bio" firstAttribute="top" secondItem="7Fa-BI-4WV" secondAttribute="bottom" constant="5" id="dtw-Nr-JZE"/>
+                            <constraint firstItem="Y5y-Kw-w9d" firstAttribute="trailing" secondItem="7Fa-BI-4WV" secondAttribute="trailing" id="gEx-TW-QCS"/>
+                            <constraint firstItem="JUu-vD-Bio" firstAttribute="leading" secondItem="Y5y-Kw-w9d" secondAttribute="leading" id="hQ9-GQ-L3h"/>
+                            <constraint firstItem="8fK-YP-1ar" firstAttribute="top" secondItem="JUu-vD-Bio" secondAttribute="bottom" constant="160" id="lEp-3I-0Vs"/>
+                            <constraint firstItem="JUu-vD-Bio" firstAttribute="trailing" secondItem="Y5y-Kw-w9d" secondAttribute="trailing" id="om6-Kd-hcZ"/>
+                            <constraint firstItem="7Fa-BI-4WV" firstAttribute="top" secondItem="Y5y-Kw-w9d" secondAttribute="top" constant="55" id="xmM-wH-FsK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y5y-Kw-w9d"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jtU-7V-DsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-201" y="1674"/>
+        </scene>
+        <!--Space Floor View Controller-->
+        <scene sceneID="vJY-2y-rh5">
+            <objects>
+                <viewController id="iYq-uj-bmv" customClass="SpaceFloorViewController" customModule="ParkingPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HkA-hI-U1c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Floor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K57-ND-e2w">
+                                <rect key="frame" x="0.0" y="114" width="375" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="A0Y-10-0QI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tt-tb-wcT">
+                                <rect key="frame" x="0.0" y="152" width="375" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="IQu-6w-okk"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmn-7P-7Nm">
+                                <rect key="frame" x="0.0" y="492" width="375" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="eY6-yv-GWX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveFloorTouched:" destination="iYq-uj-bmv" eventType="touchUpInside" id="emC-9k-am2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0f-AI-Qov">
+                                <rect key="frame" x="0.0" y="557" width="375" height="45"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="C0D-ai-Cub"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearSelectedFloor:" destination="iYq-uj-bmv" eventType="touchUpInside" id="YNg-eT-mg0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Z8A-ai-REF" firstAttribute="trailing" secondItem="Z0f-AI-Qov" secondAttribute="trailing" id="7FQ-Ar-ErF"/>
+                            <constraint firstItem="7tt-tb-wcT" firstAttribute="trailing" secondItem="Z8A-ai-REF" secondAttribute="trailing" id="QZR-Ti-9M4"/>
+                            <constraint firstItem="Z0f-AI-Qov" firstAttribute="leading" secondItem="Z8A-ai-REF" secondAttribute="leading" id="YGc-mU-Z8M"/>
+                            <constraint firstItem="Z8A-ai-REF" firstAttribute="trailing" secondItem="cmn-7P-7Nm" secondAttribute="trailing" id="axg-Bw-pTj"/>
+                            <constraint firstItem="cmn-7P-7Nm" firstAttribute="leading" secondItem="Z8A-ai-REF" secondAttribute="leading" id="e65-hk-Xqw"/>
+                            <constraint firstItem="7tt-tb-wcT" firstAttribute="top" secondItem="K57-ND-e2w" secondAttribute="bottom" constant="8" id="fnW-Jd-YY8"/>
+                            <constraint firstItem="K57-ND-e2w" firstAttribute="leading" secondItem="Z8A-ai-REF" secondAttribute="leading" id="llD-NK-q1B"/>
+                            <constraint firstItem="K57-ND-e2w" firstAttribute="top" secondItem="Z8A-ai-REF" secondAttribute="top" constant="50" id="nNl-mw-RRY"/>
+                            <constraint firstItem="7tt-tb-wcT" firstAttribute="leading" secondItem="Z8A-ai-REF" secondAttribute="leading" id="ob6-1h-I61"/>
+                            <constraint firstItem="Z0f-AI-Qov" firstAttribute="top" secondItem="cmn-7P-7Nm" secondAttribute="bottom" constant="20" id="tEE-mA-wlA"/>
+                            <constraint firstItem="cmn-7P-7Nm" firstAttribute="top" secondItem="7tt-tb-wcT" secondAttribute="bottom" constant="165" id="vIx-Of-e7t"/>
+                            <constraint firstItem="Z8A-ai-REF" firstAttribute="trailing" secondItem="K57-ND-e2w" secondAttribute="trailing" id="vuC-Ru-JhI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z8A-ai-REF"/>
+                    </view>
+                    <connections>
+                        <outlet property="floorNumberPicker" destination="7tt-tb-wcT" id="sAc-fg-pKR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vpO-WS-eUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="1764.4677661169417"/>
         </scene>
         <!--Suffix Table View Controller-->
         <scene sceneID="gBO-eM-80w">

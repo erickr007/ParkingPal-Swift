@@ -10,17 +10,20 @@ import UIKit
 
 protocol SetLocationDetailsTableDelegate{
     func showSpaceInfo()
+    func showSelectFloor()
+    func showSpaceExpirationInfo()
     func spaceNameUpdated(name: String?)
     func spaceFloorUpdated(floor: String)
-    func spaceRateUpdated(rate: String)
+    func spaceExpirationUpdated(expires: Date)
     func clearSpaceNumber()
 }
 
-class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberDelegate {
+class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberDelegate, SpaceFloorDelegate, SpaceExpirationDelgate {
+    
 
     @IBOutlet weak var spaceNameLabel: UILabel!
     @IBOutlet weak var spaceFloorLabel: UILabel!
-    @IBOutlet weak var spaceRateLabel: UILabel!
+    @IBOutlet weak var spaceExpirationLabel: UILabel!
     
     
     var delegate: SetLocationDetailsTableDelegate? = nil
@@ -32,6 +35,9 @@ class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberD
             delegate?.spaceNameUpdated(name: self.spaceName)
         }
     }
+    
+    var sourceFloor: String? = nil
+    var sourceExpiration: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +52,12 @@ class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberD
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             delegate?.showSpaceInfo()
+        }
+        else if indexPath.row == 1{
+            delegate?.showSelectFloor()
+        }
+        else if indexPath.row == 2{
+            delegate?.showSpaceExpirationInfo()
         }
     }
     
@@ -85,14 +97,31 @@ class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberD
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: SpaceFloorDelegate Methods
+    //***********************************
+    
+    func spaceFloorUpdated(floor: String) {
+        sourceFloor = floor
+        spaceFloorLabel.text = floor
     }
-    */
+    
+    func clearSpaceFloor() {
+        sourceFloor = nil
+        spaceFloorLabel.text = "(None Specified)"
+    }
 
+    
+    //MARK: SpaceExpirationDelegate Methods
+    //*****************************************
+    
+    func updateExpiration(date: Date) {
+        sourceExpiration = date
+        spaceExpirationLabel.text = date.description
+    }
+    
+    func clearExpireDate() {
+        sourceExpiration = nil
+        spaceExpirationLabel.text = "(None Specified)"
+    }
+    
 }

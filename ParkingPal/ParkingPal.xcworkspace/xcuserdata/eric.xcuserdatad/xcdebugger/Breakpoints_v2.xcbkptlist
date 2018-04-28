@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
-            timestampString = "545687500.092609"
+            timestampString = "546606416.492099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
-            timestampString = "545687500.0929689"
+            timestampString = "546606416.492362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -314,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
-            timestampString = "545687500.093209"
+            timestampString = "546606416.492468"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
-            timestampString = "545687500.0934449"
+            timestampString = "546606416.492578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "pickerView(_:didSelectRow:inComponent:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
-            timestampString = "545687500.093681"
+            timestampString = "546606416.492686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationDetailsTableViewController.swift"
-            timestampString = "545687500.093938"
+            timestampString = "546606416.492851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "spaceNameUpdated(space:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
-            timestampString = "545687500.093999"
+            timestampString = "546606416.4929709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "spaceNameUpdated(name:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationDetailsTableViewController.swift"
-            timestampString = "545687500.094256"
+            timestampString = "546606416.4930691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "spaceSuffixUpdated(suffixList:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SuffixTableViewController.swift"
-            timestampString = "545687500.0943249"
+            timestampString = "546202522.156934"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SuffixTableViewController.swift"
-            timestampString = "545687500.094377"
+            timestampString = "546202522.158018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -490,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationDetailsTableViewController.swift"
-            timestampString = "545687500.094445"
+            timestampString = "546606416.493198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "updateSpaceNameFromSource()"
             landmarkType = "7">
             <Locations>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationDetailsTableViewController.swift"
-            timestampString = "545687500.094496"
+            timestampString = "546606416.49331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "updateSpaceNameFromSource()"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,12 +554,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SpaceNumberViewController.swift"
-            timestampString = "545687500.0945489"
+            timestampString = "546443858.824608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
             endingLineNumber = "84"
-            landmarkName = "SpaceNumberViewController"
+            landmarkName = "clearSpaceTouched(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParkingPal/Controllers/SetLocationDetailsTableViewController.swift"
+            timestampString = "546606416.493468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "clearSpaceName()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParkingPal/Controllers/SpaceFloorViewController.swift"
+            timestampString = "546606416.493627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "SpaceFloorViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -570,12 +602,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParkingPal/Controllers/SetLocationDetailsTableViewController.swift"
-            timestampString = "545687500.094592"
+            timestampString = "546606416.493698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "updateExpiration(date:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParkingPal/Controllers/SetLocationViewController.swift"
+            timestampString = "546606416.493763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "clearSpaceName()"
+            landmarkName = "saveSpaceLocationTouched(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
