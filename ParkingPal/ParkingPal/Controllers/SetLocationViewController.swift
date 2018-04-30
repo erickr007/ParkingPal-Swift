@@ -9,12 +9,17 @@
 import CoreData
 import UIKit
 
+protocol SetLocationDelegate{
+    func newLocationSet(space: ParkingSpace)
+}
+
 class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, SetLocationDetailsTableDelegate {
 
     @IBOutlet weak var parkingTypePicker: UIPickerView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var delegate: SetLocationDelegate? = nil
     var currentLocation: Location? = nil
     var detailsTableVC: SetLocationDetailsTableViewController? = nil
     
@@ -78,8 +83,6 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
                 parking.isActive = false
             }
             
-            context
-            
             try context.save()
         }
         catch{
@@ -119,6 +122,8 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
         catch{
             print("Error saving parking space \(error)")
         }
+        
+        delegate?.newLocationSet(space: space)
         
         self.navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

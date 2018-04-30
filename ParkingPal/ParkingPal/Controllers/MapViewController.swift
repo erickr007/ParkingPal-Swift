@@ -12,8 +12,9 @@ import CoreData
 import SwiftyJSON
 import UIKit
 
-class MapViewController: UIViewController, MapFilterDelegate{
+class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegate{
 
+    @IBOutlet weak var activeLocationBar: UIButton!
     @IBOutlet weak var identifyContainer: UIView!
     @IBOutlet weak var identifyBottomConstraint: NSLayoutConstraint!
     
@@ -30,6 +31,7 @@ class MapViewController: UIViewController, MapFilterDelegate{
     
     //- variable properties
     private var currentMapFilter : MapFilter? = nil
+    private var activeParkingSpace : ParkingSpace? = nil
     private var currentLocations: [Location] = [Location](){
         didSet{
             updateMap()
@@ -75,6 +77,8 @@ class MapViewController: UIViewController, MapFilterDelegate{
         
         mapView.touchDelegate = self
         mapView.viewpointChangedHandler = respondToEnvChange
+        
+        loadActiveParkingBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -99,9 +103,58 @@ class MapViewController: UIViewController, MapFilterDelegate{
         else if segue.identifier == "goToMapSetLocation" {
             let setLocationVC = segue.destination as! SetLocationViewController
             
+            setLocationVC.delegate = self
             setLocationVC.currentLocation = selectedLocation
         }
     }
+    
+    //MARK:  SetLocationDelegate Methods
+    //**************************************
+    
+    func newLocationSet(space: ParkingSpace) {
+        activeParkingSpace = space
+        loadActiveParkingBar()
+        
+        // reload identify if it is already open
+        if identifyBottomConstraint.constant >= 0{
+            loadIdentify()
+        }
+    }
+    
+    
+    //MARK:  CoreData Methods
+    //****************************
+    
+    func getActiveParkingSpace() -> ParkingSpace?{
+        var parkingSpace : ParkingSpace? = nil
+        
+        let request : NSFetchRequest<ParkingSpace> = ParkingSpace.fetchRequest()
+        let predicate = NSPredicate(format: "isActive = true")
+        
+        request.predicate = predicate
+        
+        do{
+            parkingSpace = try context.fetch(request).first
+        }
+        catch{
+            print("Error retrieving Active Location: \(error)")
+        }
+        
+        return parkingSpace
+    }
+    
+    func saveContext(){
+        do{
+            try context.save()
+        }
+        catch{
+            print("Error save context data: \(error)")
+        }
+    }
+    
+    
+    //MARK: Menu Methods
+    //***********************
     
     func closeMenu(){
             //close the menu
@@ -126,6 +179,21 @@ class MapViewController: UIViewController, MapFilterDelegate{
         
         isMenuOpen = true
     }
+    
+    //MARK: Active Location Methods
+    //********************************
+    
+    func loadActiveParkingBar(){
+        activeParkingSpace = getActiveParkingSpace()
+        
+        if activeParkingSpace != nil{
+            activeLocationBar.isHidden = false
+        }
+        else{
+            activeLocationBar.isHidden = true
+        }
+    }
+    
 
     @IBAction func menuBtnTouched(_ sender: Any) {
         if isMenuOpen{
@@ -143,7 +211,6 @@ class MapViewController: UIViewController, MapFilterDelegate{
     func applyFilter(filter: MapFilter?) {
         currentMapFilter = filter
     }
-    
     
     
     
@@ -173,9 +240,28 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
         performSegue(withIdentifier: "goToMapSetLocation", sender: self)
     }
     
+    func stopTrackingLocation(){
+        activeParkingSpace?.isActive = false
+        saveContext()
+        
+        loadActiveParkingBar()
+        loadIdentify()
+    }
+    
     func loadIdentify(){
         identifyViewController?.addressLabel.text = selectedLocation?.address
         identifyViewController?.titleButton.setTitle(selectedLocation?.title, for: .normal)
+        
+        if let loc = activeParkingSpace?.spaceLocation{
+            if loc.address == selectedLocation?.address{
+                identifyViewController?.isActiveLocationSet = true
+                identifyViewController?.setLocationButton.setTitle("Stop Tracking", for: .normal)
+            }
+        }
+        else{
+            identifyViewController?.isActiveLocationSet = false
+            identifyViewController?.setLocationButton.setTitle("Set Location", for: .normal)
+        }
         
         while self.identifyBottomConstraint.constant < 0{
             UIView.animate(withDuration: 0.2, animations: {

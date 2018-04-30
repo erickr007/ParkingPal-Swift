@@ -37,6 +37,9 @@ class HistoryTableViewController: SwipeableTableViewController {
     
     func loadItems(){
         let request : NSFetchRequest<ParkingSpace> = ParkingSpace.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "timeIn", ascending: false)
+        
+        request.sortDescriptors = [sortDescriptor]
         
         do{
             parkingSpaceList = try context.fetch(request)

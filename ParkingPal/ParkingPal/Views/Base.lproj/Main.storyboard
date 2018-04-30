@@ -154,23 +154,36 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wws-rp-8zi">
-                                        <rect key="frame" x="301" y="15" width="44" height="30"/>
+                                        <rect key="frame" x="301" y="50" width="44" height="30"/>
                                         <state key="normal" title="MENU"/>
                                         <connections>
                                             <action selector="menuBtnTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0LS-2U-4iJ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ope-io-uWL">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <color key="backgroundColor" red="0.27344464985839712" green="0.69500054137835532" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="wAx-8k-IYU"/>
+                                        </constraints>
+                                        <state key="normal" title="Active Parking Space">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Ope-io-uWL" firstAttribute="top" secondItem="6fp-9d-skS" secondAttribute="top" id="1rO-yR-c51"/>
                                     <constraint firstAttribute="trailing" secondItem="jap-dg-UAK" secondAttribute="trailing" id="9sC-iF-hpZ"/>
                                     <constraint firstAttribute="bottom" secondItem="vMf-XX-Oil" secondAttribute="bottom" constant="120" id="NQi-Tn-xAS"/>
+                                    <constraint firstItem="Ope-io-uWL" firstAttribute="leading" secondItem="6fp-9d-skS" secondAttribute="leading" id="aqt-sU-mgU"/>
                                     <constraint firstItem="jap-dg-UAK" firstAttribute="leading" secondItem="6fp-9d-skS" secondAttribute="leading" id="dv5-vm-DMz"/>
                                     <constraint firstItem="vMf-XX-Oil" firstAttribute="leading" secondItem="6fp-9d-skS" secondAttribute="leading" id="etU-8l-8KF"/>
                                     <constraint firstItem="vMf-XX-Oil" firstAttribute="top" secondItem="6fp-9d-skS" secondAttribute="top" constant="120" id="j8V-ZH-AEo"/>
                                     <constraint firstAttribute="trailing" secondItem="Wws-rp-8zi" secondAttribute="trailing" constant="30" id="jvl-Q6-fA2"/>
                                     <constraint firstAttribute="bottom" secondItem="jap-dg-UAK" secondAttribute="bottom" id="k9g-EV-XoA"/>
-                                    <constraint firstItem="Wws-rp-8zi" firstAttribute="top" secondItem="6fp-9d-skS" secondAttribute="top" constant="15" id="q6E-xt-0VA"/>
+                                    <constraint firstItem="Wws-rp-8zi" firstAttribute="top" secondItem="6fp-9d-skS" secondAttribute="top" constant="50" id="q6E-xt-0VA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ope-io-uWL" secondAttribute="trailing" id="tZV-7q-R5S"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -191,6 +204,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activeLocationBar" destination="Ope-io-uWL" id="xj6-Sb-dhT"/>
                         <outlet property="identifyBottomConstraint" destination="k9g-EV-XoA" id="Jef-WH-ywN"/>
                         <outlet property="identifyContainer" destination="jap-dg-UAK" id="Nco-VV-ta1"/>
                         <outlet property="mapView" destination="6fp-9d-skS" id="IHq-72-vul"/>
@@ -1030,6 +1044,7 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="PFe-CM-Bi9" id="ShC-2L-Yko"/>
+                        <outlet property="setLocationButton" destination="88t-9T-yA6" id="s0w-bo-8jW"/>
                         <outlet property="titleButton" destination="aFF-UE-Flv" id="plj-cu-Ajn"/>
                     </connections>
                 </viewController>

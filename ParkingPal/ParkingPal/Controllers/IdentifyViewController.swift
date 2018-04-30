@@ -10,6 +10,7 @@ import UIKit
 
 protocol IdentifyViewDelegate{
     func setLocation()
+    func stopTrackingLocation()
     func closeIdentify()
     func goToLocation()
 }
@@ -18,13 +19,14 @@ class IdentifyViewController: UIViewController {
 
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var setLocationButton: UIButton!
     
-    public var delegate: IdentifyViewDelegate? = nil
+    var delegate: IdentifyViewDelegate? = nil
+    var isActiveLocationSet = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +45,13 @@ class IdentifyViewController: UIViewController {
     }
     
     @IBAction func setLocationButton(_ sender: Any) {
-        delegate?.setLocation()
+        
+        if isActiveLocationSet == false{
+            delegate?.setLocation()
+        }
+        else{
+            delegate?.stopTrackingLocation()
+        }
     }
     
     
