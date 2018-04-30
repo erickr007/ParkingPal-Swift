@@ -106,6 +106,10 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
             setLocationVC.delegate = self
             setLocationVC.currentLocation = selectedLocation
         }
+        else if segue.identifier == "goToActiveParking"{
+            let activeParkingVC = segue.destination as! ActiveParkingSpaceTableViewController
+            activeParkingVC.currentParkingSpace = activeParkingSpace
+        }
     }
     
     //MARK:  SetLocationDelegate Methods
@@ -188,13 +192,23 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
         
         if activeParkingSpace != nil{
             activeLocationBar.isHidden = false
+            
+            //while activeLocationBar.alpha > 0.1 {
+//            UIView.animate(withDuration: 2, delay: 0, options: [.repeat,.autoreverse], animations: {
+//                    self.activeLocationBar.alpha = 0.2
+//                })
+            
         }
         else{
+            activeLocationBar.alpha = 1
             activeLocationBar.isHidden = true
         }
     }
     
 
+    //MARK: IBAction Methods
+    //***************************
+    
     @IBAction func menuBtnTouched(_ sender: Any) {
         if isMenuOpen{
             closeMenu()
@@ -204,6 +218,10 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
         }
     }
     
+    
+    @IBAction func activeParkingTouched(_ sender: UIButton) {
+        //performSegue(withIdentifier: "goToActiveParking", sender: self)
+    }
     
     //MARK: MapFilterDelegate Method
     //*******************************************

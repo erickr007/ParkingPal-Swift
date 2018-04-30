@@ -17,6 +17,7 @@
 		07137E3E208E68AE00815FE0 /* SpaceFloorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E3D208E68AE00815FE0 /* SpaceFloorViewController.swift */; };
 		07137E402092116000815FE0 /* SpaceExpirationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E3F2092116000815FE0 /* SpaceExpirationViewController.swift */; };
 		07137E422094B16900815FE0 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E412094B16900815FE0 /* HistoryTableViewCell.swift */; };
+		07137E46209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E45209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift */; };
 		073E48B32081002100BE3BB9 /* SpaceNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E48B22081002100BE3BB9 /* SpaceNumberViewController.swift */; };
 		073E48B52082185E00BE3BB9 /* SuffixTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E48B42082185E00BE3BB9 /* SuffixTableViewController.swift */; };
 		073E48B72082214100BE3BB9 /* AddSuffixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E48B62082214100BE3BB9 /* AddSuffixViewController.swift */; };
@@ -63,6 +64,7 @@
 		07137E3D208E68AE00815FE0 /* SpaceFloorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceFloorViewController.swift; sourceTree = "<group>"; };
 		07137E3F2092116000815FE0 /* SpaceExpirationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceExpirationViewController.swift; sourceTree = "<group>"; };
 		07137E412094B16900815FE0 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		07137E45209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveParkingSpaceTableViewController.swift; sourceTree = "<group>"; };
 		073E48B22081002100BE3BB9 /* SpaceNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceNumberViewController.swift; sourceTree = "<group>"; };
 		073E48B42082185E00BE3BB9 /* SuffixTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuffixTableViewController.swift; sourceTree = "<group>"; };
 		073E48B62082214100BE3BB9 /* AddSuffixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSuffixViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				073E48D920864FF200BE3BB9 /* SwipeableTableViewController.swift */,
 				07137E3D208E68AE00815FE0 /* SpaceFloorViewController.swift */,
 				07137E3F2092116000815FE0 /* SpaceExpirationViewController.swift */,
+				07137E45209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				073E48DA20864FF200BE3BB9 /* SwipeableTableViewController.swift in Sources */,
 				07137E402092116000815FE0 /* SpaceExpirationViewController.swift in Sources */,
 				07080FBC206B9BF100A8B4C7 /* IdentifyViewController.swift in Sources */,
+				07137E46209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift in Sources */,
 				074417EE204D56EA0031F8BF /* ParkingPal.xcdatamodeld in Sources */,
 				07080FBA206A343700A8B4C7 /* ParkingDetailsTableTableViewController.swift in Sources */,
 				074417E6204D56EA0031F8BF /* AppDelegate.swift in Sources */,
