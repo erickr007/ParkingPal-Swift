@@ -36,8 +36,18 @@ class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberD
         }
     }
     
-    var sourceFloor: String? = nil
-    var sourceExpiration: Date? = nil
+    var sourceFloor: String?{
+        didSet{
+            delegate?.spaceFloorUpdated(floor: (self.sourceFloor ?? nil)!)
+        }
+    }
+    var sourceExpiration: Date?{
+        didSet{
+            delegate?.spaceExpirationUpdated(expires: (self.sourceExpiration ?? nil)!)
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

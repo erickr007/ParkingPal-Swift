@@ -8,9 +8,12 @@
 
 import UIKit
 
-protocol IdentifyViewDelegate{
+protocol BaseLocationTrackingProtocol{
     func setLocation()
     func stopTrackingLocation()
+}
+
+protocol IdentifyViewDelegate: BaseLocationTrackingProtocol{
     func closeIdentify()
     func goToLocation()
 }

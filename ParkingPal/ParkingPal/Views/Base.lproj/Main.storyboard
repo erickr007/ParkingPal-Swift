@@ -78,10 +78,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
+                            <tableViewSection headerTitle="Address" id="gSI-rs-v0H">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nbs-e9-JbB">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbs-e9-JbB" id="1Tl-pZ-RLz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1H-be-Roa">
+                                                    <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="O1H-be-Roa" firstAttribute="top" secondItem="1Tl-pZ-RLz" secondAttribute="topMargin" id="0VI-5j-sMg"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="O1H-be-Roa" secondAttribute="bottom" id="FXJ-Lc-Iqm"/>
+                                                <constraint firstItem="O1H-be-Roa" firstAttribute="leading" secondItem="1Tl-pZ-RLz" secondAttribute="leadingMargin" id="eCa-1z-N8J"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="O1H-be-Roa" secondAttribute="trailing" id="yjX-Ni-gIh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Parking Type" id="rCP-Wp-eAl">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qGK-xX-Za8">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qGK-xX-Za8" id="746-qj-t8p">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -107,7 +133,7 @@
                             <tableViewSection headerTitle="Space Number" id="mO1-b8-a63">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="avr-Yw-WJt">
-                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="255.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="avr-Yw-WJt" id="zex-Al-zVw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -133,7 +159,7 @@
                             <tableViewSection headerTitle="Floor" id="4DC-qc-Lp3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="RKg-Rz-tCZ">
-                                        <rect key="frame" x="0.0" y="255.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="355.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RKg-Rz-tCZ" id="5yC-Di-e8N">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -159,7 +185,7 @@
                             <tableViewSection headerTitle="Expiration" id="9fu-hI-lfT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LCQ-NM-5NI">
-                                        <rect key="frame" x="0.0" y="355.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LCQ-NM-5NI" id="hEM-UV-Zr8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -185,7 +211,7 @@
                             <tableViewSection id="p5t-yW-EaI">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fAY-Ig-Q54">
-                                        <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="535.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fAY-Ig-Q54" id="3U0-e7-w6q">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -194,6 +220,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVl-11-WWv">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <state key="normal" title="Stop Tracking"/>
+                                                    <connections>
+                                                        <action selector="stopTrackingTouched:" destination="JE3-cL-uZe" eventType="touchUpInside" id="t69-EC-4Yp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -213,6 +242,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="parkingAddressLabel" destination="O1H-be-Roa" id="ybQ-gJ-O7T"/>
                         <outlet property="parkingExpirationLabel" destination="GgF-Qo-0ko" id="J7G-Bh-pvQ"/>
                         <outlet property="parkingFloorLabel" destination="3SY-xp-24K" id="CuA-vb-sG5"/>
                         <outlet property="parkingSpaceNameLabel" destination="uMC-Il-jMK" id="5wh-5e-yzc"/>
@@ -320,6 +350,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wAx-8k-IYU"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Active Parking Space">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>

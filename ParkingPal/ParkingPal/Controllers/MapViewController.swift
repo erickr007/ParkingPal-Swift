@@ -108,6 +108,7 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
         }
         else if segue.identifier == "goToActiveParking"{
             let activeParkingVC = segue.destination as! ActiveParkingSpaceTableViewController
+            activeParkingVC.delegate = self
             activeParkingVC.currentParkingSpace = activeParkingSpace
         }
     }
@@ -190,9 +191,26 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
     func loadActiveParkingBar(){
         activeParkingSpace = getActiveParkingSpace()
         
+        
         if activeParkingSpace != nil{
             activeLocationBar.isHidden = false
             
+            // set parking space title
+            activeLocationBar.setTitle(activeParkingSpace!.fullyQualifiedName(), for: .normal)
+            
+            // set background
+            
+            let nonExpiredBgColor: UIColor = UIColor(displayP3Red: 70/255, green: 177/255, blue: 1, alpha: 1.0)
+            let expiredBgColor: UIColor = UIColor(displayP3Red: 1, green: 59/255, blue: 49/255, alpha: 1.0)
+            
+            // apply default background
+            activeLocationBar.backgroundColor = nonExpiredBgColor
+            
+            if let expiration = activeParkingSpace!.expireTime {
+                if expiration <= Date.init(){
+                    activeLocationBar.backgroundColor = expiredBgColor
+                }
+            }
             //while activeLocationBar.alpha > 0.1 {
 //            UIView.animate(withDuration: 2, delay: 0, options: [.repeat,.autoreverse], animations: {
 //                    self.activeLocationBar.alpha = 0.2
@@ -260,10 +278,15 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
     
     func stopTrackingLocation(){
         activeParkingSpace?.isActive = false
+        activeParkingSpace?.timeOut = Date.init()
         saveContext()
         
         loadActiveParkingBar()
-        loadIdentify()
+        
+        // only load identify if it was already opent
+        if identifyBottomConstraint.constant >= 0{
+            loadIdentify()
+        }
     }
     
     func loadIdentify(){
