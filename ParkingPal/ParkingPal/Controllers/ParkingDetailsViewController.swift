@@ -30,11 +30,17 @@ class ParkingDetailsViewController: UIViewController, ParkingDetailsTableDelegat
         
         SVProgressHUD.show()
         
-        navigationController?.navigationBar.isHidden = false
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
         loadLocationUI()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

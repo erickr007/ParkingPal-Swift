@@ -111,6 +111,10 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
             activeParkingVC.delegate = self
             activeParkingVC.currentParkingSpace = activeParkingSpace
         }
+        else if segue.identifier == "goToBrowseLocations"{
+            let browseLocationsVC = segue.destination as! BrowseLocationsTableViewController
+            browseLocationsVC.locations = currentLocations
+        }
     }
     
     //MARK:  SetLocationDelegate Methods
