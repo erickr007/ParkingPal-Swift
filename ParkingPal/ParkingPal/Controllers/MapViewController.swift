@@ -114,6 +114,7 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
         else if segue.identifier == "goToBrowseLocations"{
             let browseLocationsVC = segue.destination as! BrowseLocationsTableViewController
             browseLocationsVC.locations = currentLocations
+            browseLocationsVC.delegate = self
         }
     }
     
@@ -280,10 +281,19 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
         performSegue(withIdentifier: "goToMapSetLocation", sender: self)
     }
     
+    func startTrackingLocation(space: ParkingSpace) {
+        activeParkingSpace = space
+        loadActiveParkingBar()
+        
+        // reload identify if it is already open
+        if identifyBottomConstraint.constant >= 0{
+            loadIdentify()
+        }
+    }
+    
     func stopTrackingLocation(){
-        activeParkingSpace?.isActive = false
-        activeParkingSpace?.timeOut = Date.init()
-        saveContext()
+        
+        activeParkingSpace = CoreDataManager.getActiveParkingSpace()
         
         loadActiveParkingBar()
         
@@ -301,6 +311,10 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
             if loc.address == selectedLocation?.address{
                 identifyViewController?.isActiveLocationSet = true
                 identifyViewController?.setLocationButton.setTitle("Stop Tracking", for: .normal)
+            }
+            else{
+                identifyViewController?.isActiveLocationSet = false
+                identifyViewController?.setLocationButton.setTitle("Set Location", for: .normal)
             }
         }
         else{
@@ -424,7 +438,7 @@ extension MapViewControllerRest{
             "wkid" : wkid
         ]
         let headers = ["Content-type": "application/json"]
-        
+        print("Requesting data for new envelope")
         Alamofire.request(parkingPalAPIUrl + "locations/envelope", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON {
             (response) in
             if response.result.isSuccess{

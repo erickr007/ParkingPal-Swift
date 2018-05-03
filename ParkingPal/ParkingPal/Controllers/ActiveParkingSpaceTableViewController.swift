@@ -65,6 +65,7 @@ class ActiveParkingSpaceTableViewController: UITableViewController {
     //*******************************
     
     @IBAction func stopTrackingTouched(_ sender: Any) {
+        CoreDataManager.stopTrackingLocation()
         delegate?.stopTrackingLocation()
         
         navigationController?.popViewController(animated: true)

@@ -618,6 +618,7 @@
                         <outlet property="address" destination="cNQ-jB-csV" id="avT-kQ-WQd"/>
                         <outlet property="parkingDescription" destination="cmC-46-8Bf" id="5eV-nh-ahe"/>
                         <outlet property="parkingType" destination="A7g-x4-Vkg" id="6Qx-AW-fqa"/>
+                        <outlet property="setLocationButton" destination="L0v-nV-7VN" id="CGw-EC-EuJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5L0-WR-bUD" userLabel="First Responder" sceneMemberID="firstResponder"/>

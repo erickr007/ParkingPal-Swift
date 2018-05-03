@@ -8,7 +8,9 @@
 
 import UIKit
 
-class BrowseLocationsTableViewController: UITableViewController {
+class BrowseLocationsTableViewController: UITableViewController, BaseLocationTrackingProtocol {
+    
+    var delegate: BaseLocationTrackingProtocol? = nil
 
     var locations: [Location] = []
     var selectedIndex: Int? = nil
@@ -20,6 +22,7 @@ class BrowseLocationsTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.topItem?.title = "Back"
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -58,9 +61,25 @@ class BrowseLocationsTableViewController: UITableViewController {
         performSegue(withIdentifier: "goFromBrowseToDetails", sender: self)
     }
 
-
+    // MARK: - BaseLocationTrackingProtocol Methods
+    //******************************************
+    
+    
+    func setLocation() {
+        delegate?.setLocation()
+    }
+    
+    func startTrackingLocation(space: ParkingSpace) {
+        delegate?.startTrackingLocation(space: space)
+    }
+    
+    func stopTrackingLocation() {
+        delegate?.stopTrackingLocation()
+    }
+    
     
     // MARK: - Navigation
+    //******************************************
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,6 +88,7 @@ class BrowseLocationsTableViewController: UITableViewController {
             
             if let index = selectedIndex {
                 detailsVC.currentLocation = locations[index]
+                detailsVC.delegate = self
             }
         }
     }

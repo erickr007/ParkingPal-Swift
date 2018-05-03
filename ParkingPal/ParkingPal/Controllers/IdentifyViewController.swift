@@ -10,6 +10,7 @@ import UIKit
 
 protocol BaseLocationTrackingProtocol{
     func setLocation()
+    func startTrackingLocation(space: ParkingSpace)
     func stopTrackingLocation()
 }
 
@@ -53,6 +54,7 @@ class IdentifyViewController: UIViewController {
             delegate?.setLocation()
         }
         else{
+            CoreDataManager.stopTrackingLocation()
             delegate?.stopTrackingLocation()
         }
     }

@@ -11,13 +11,20 @@ import UIKit
 
 protocol ParkingDetailsTableDelegate{
     func goToDetails()
+    func locationTrackingStarted(space: ParkingSpace)
+    func locationTrackingStopped()
 }
 
-class ParkingDetailsTableTableViewController: UITableViewController {
+class ParkingDetailsTableTableViewController: UITableViewController, SetLocationDelegate {
 
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var parkingDescription: UILabel!
     @IBOutlet weak var parkingType: UILabel!
+    @IBOutlet weak var setLocationButton: UIButton!
+    
+    var currentLocation: Location? = nil
+    var activeParkingSpace: ParkingSpace? = nil
+    var trackingCurrentLocation = false
     
     var delegate: ParkingDetailsTableDelegate? = nil
     
@@ -26,85 +33,53 @@ class ParkingDetailsTableTableViewController: UITableViewController {
 
         //SVProgressHUD.show()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        activeParkingSpace = CoreDataManager.getActiveParkingSpace()
+        loadData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         //SVProgressHUD.dismiss()
     }
+    
+    func loadData(){
+        if let space = activeParkingSpace{
+            if space.spaceLocation?.address == currentLocation?.address {
+                setLocationButton.setTitle("Stop Tracking", for: .normal)
+                trackingCurrentLocation = true
+            }
+            else{
+                setLocationButton.setTitle("Set Location", for: .normal)
+                trackingCurrentLocation = false
+            }
+        }
+    }
+    
+    //MARK:  SetLocationDelegate Methods
+    //****************************************
+    
+    func newLocationSet(space: ParkingSpace) {
+        activeParkingSpace = space
+        loadData()
+        
+        delegate?.locationTrackingStarted(space: space)
+    }
+    
 
     @IBAction func setLocationTouched(_ sender: Any) {
-        delegate?.goToDetails()
+        if trackingCurrentLocation == true{
+            activeParkingSpace?.isActive = false
+            
+            CoreDataManager.saveContext()
+            
+            delegate?.locationTrackingStopped()
+            
+            navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            delegate?.goToDetails()
+        }
     }
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 3
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
