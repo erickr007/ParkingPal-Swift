@@ -144,7 +144,7 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
         performSegue(withIdentifier: "goToSpaceExpiration", sender: self)
     }
     
-    func spaceFloorUpdated(floor: String) {
+    func spaceFloorUpdated(floor: String?) {
         parkingSpaceFloor = floor
     }
     
@@ -153,7 +153,7 @@ class SetLocationViewController: UIViewController, UIPickerViewDataSource, UIPic
 
     }
     
-    func spaceExpirationUpdated(expires: Date) {
+    func spaceExpirationUpdated(expires: Date?) {
         parkingSpaceExpiration = expires
     }
     

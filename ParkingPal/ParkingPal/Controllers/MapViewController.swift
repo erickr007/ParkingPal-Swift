@@ -95,6 +95,7 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
         else if segue.identifier! == "goToDetails" {
             let destination = segue.destination as! ParkingDetailsViewController
             destination.currentLocation = selectedLocation
+            destination.delegate = self
         }
         else if segue.identifier! == "embedIdentify" {
             identifyViewController = segue.destination as? IdentifyViewController

@@ -13,8 +13,8 @@ protocol SetLocationDetailsTableDelegate{
     func showSelectFloor()
     func showSpaceExpirationInfo()
     func spaceNameUpdated(name: String?)
-    func spaceFloorUpdated(floor: String)
-    func spaceExpirationUpdated(expires: Date)
+    func spaceFloorUpdated(floor: String?)
+    func spaceExpirationUpdated(expires: Date?)
     func clearSpaceNumber()
 }
 
@@ -38,12 +38,12 @@ class SetLocationDetailsTableViewController: UITableViewController, SpaceNumberD
     
     var sourceFloor: String?{
         didSet{
-            delegate?.spaceFloorUpdated(floor: (self.sourceFloor ?? nil)!)
+            delegate?.spaceFloorUpdated(floor: self.sourceFloor)
         }
     }
     var sourceExpiration: Date?{
         didSet{
-            delegate?.spaceExpirationUpdated(expires: (self.sourceExpiration ?? nil)!)
+            delegate?.spaceExpirationUpdated(expires: self.sourceExpiration)
         }
     }
     
