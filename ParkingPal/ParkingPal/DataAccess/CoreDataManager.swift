@@ -12,6 +12,9 @@ import UIKit
 
 class CoreDataManager{
     
+    //MARK - ParkingSpace Methods
+    //******************************
+    
     static func getActiveParkingSpace() -> ParkingSpace?{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         var parkingSpace : ParkingSpace? = nil
@@ -44,6 +47,47 @@ class CoreDataManager{
         activeParkingSpace?.timeOut = Date.init()
         saveContext()
     }
+    
+    
+    //MARK - NotificationSettings
+    //*********************************
+    
+    static func getNotificationSettnings() -> NotificationSettings?{
+        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+        var notificationSettings: NotificationSettings? = nil
+        let request : NSFetchRequest<NotificationSettings> = NotificationSettings.fetchRequest()
+        
+        do{
+            notificationSettings = try context.fetch(request).first
+            
+            if notificationSettings == nil{
+                initNotificationSettings()
+            }
+            
+            notificationSettings = try context.fetch(request).first
+        }
+        catch{
+            print("Error retrieving NotificationSettings: \(error)")
+        }
+        
+        return notificationSettings
+    }
+    
+    
+    static func initNotificationSettings(){
+        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+        
+        let notificationSettings: NotificationSettings = NotificationSettings(context: context)
+        
+        notificationSettings.isAllowed = true
+        notificationSettings.isTimeElapsedRepeating = false
+        notificationSettings.usePriorToExpiration = false
+        notificationSettings.useTimeElapsed = false
+        notificationSettings.useTimeExpired = true
+        
+        saveContext()
+    }
+    
     
     static func saveContext(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

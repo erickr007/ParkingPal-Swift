@@ -11,6 +11,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Hour Minute Second Picker View Controller-->
+        <scene sceneID="WgV-Yf-0es">
+            <objects>
+                <viewController id="Stt-ca-7zv" customClass="HourMinuteSecondPickerViewController" customModule="ParkingPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8C5-CF-7AW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="59" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6E-HE-Pkr">
+                                <rect key="frame" x="0.0" y="127" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="548701865.88112104">
+                                    <!--2018-05-22 17:11:05 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="timeChanged:" destination="Stt-ca-7zv" eventType="valueChanged" id="YaR-ej-r3G"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-Vu-5z7">
+                                <rect key="frame" x="0.0" y="562" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="pHd-MZ-mmZ"/>
+                                </constraints>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissTouched:" destination="Stt-ca-7zv" eventType="touchUpInside" id="Ect-8e-cxb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmc-eY-sjq">
+                                <rect key="frame" x="0.0" y="492" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="uq0-LW-6du"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTouched:" destination="Stt-ca-7zv" eventType="touchUpInside" id="Oob-AD-Il9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YXN-Vu-5z7" firstAttribute="leading" secondItem="Y80-YH-1nF" secondAttribute="leading" id="Njl-Wb-r26"/>
+                            <constraint firstItem="Y80-YH-1nF" firstAttribute="trailing" secondItem="YXN-Vu-5z7" secondAttribute="trailing" id="Pvl-DK-laE"/>
+                            <constraint firstItem="Y80-YH-1nF" firstAttribute="trailing" secondItem="Nmc-eY-sjq" secondAttribute="trailing" id="aGD-TK-Nbj"/>
+                            <constraint firstItem="Y80-YH-1nF" firstAttribute="bottom" secondItem="YXN-Vu-5z7" secondAttribute="bottom" constant="60" id="lvR-Xv-v7T"/>
+                            <constraint firstItem="YXN-Vu-5z7" firstAttribute="top" secondItem="Nmc-eY-sjq" secondAttribute="bottom" constant="25" id="p6q-rv-IIv"/>
+                            <constraint firstItem="Nmc-eY-sjq" firstAttribute="leading" secondItem="Y80-YH-1nF" secondAttribute="leading" id="wV5-Vp-j0y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y80-YH-1nF"/>
+                    </view>
+                    <connections>
+                        <outlet property="timePicker" destination="Q6E-HE-Pkr" id="PLi-pl-B1j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kwr-QW-9Eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2602" y="-688"/>
+        </scene>
         <!--Notifcations Settings View Controller-->
         <scene sceneID="lsZ-Ir-Hhb">
             <objects>
@@ -39,6 +97,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3p-bC-QtN">
                                                     <rect key="frame" x="312" y="6" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="IRa-ms-YiC" eventType="valueChanged" id="Rgw-xW-VT5"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -54,9 +115,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPW-Td-jbX">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPW-Td-jbX">
                                                     <rect key="frame" x="310" y="6" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="IRa-ms-YiC" eventType="valueChanged" id="wfw-mh-WZm"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Time Elapsed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zp-QE-1yu">
                                                     <rect key="frame" x="16" y="12" width="242" height="21"/>
@@ -75,9 +139,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-Qh-gEM">
+                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-Qh-gEM">
                                                     <rect key="frame" x="312" y="6" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="IRa-ms-YiC" eventType="valueChanged" id="J0v-KB-ztx"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continuous Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6A-Eb-gKy">
                                                     <rect key="frame" x="16" y="11" width="242" height="21"/>
@@ -112,6 +179,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Stt-ca-7zv" kind="popoverPresentation" identifier="goToTimePicker" trigger="accessoryAction" popoverAnchorView="aI0-sG-9DJ" id="4T0-7r-PeZ">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -131,9 +203,12 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXV-ku-uBg">
+                                                <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXV-ku-uBg">
                                                     <rect key="frame" x="312" y="7" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="IRa-ms-YiC" eventType="valueChanged" id="av7-bB-HZG"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -145,29 +220,32 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Alert About To Expire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-Hz-Zrv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify Time About To Expire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-Hz-Zrv">
                                                     <rect key="frame" x="16" y="12" width="242" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ne9-CK-wcV">
+                                                <switch opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ne9-CK-wcV">
                                                     <rect key="frame" x="312" y="6" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="switchValueChanged:" destination="IRa-ms-YiC" eventType="valueChanged" id="k7P-jd-l7n"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="4jM-Li-XgH">
+                                    <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="4jM-Li-XgH">
                                         <rect key="frame" x="0.0" y="411" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4jM-Li-XgH" id="WfI-hX-G9h">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert Prior To Expiration " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q85-jm-fx5">
-                                                    <rect key="frame" x="16" y="9" width="206" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Prior To Expiration " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q85-jm-fx5">
+                                                    <rect key="frame" x="16" y="9" width="208" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -191,6 +269,13 @@
                             <outlet property="delegate" destination="IRa-ms-YiC" id="ASk-x8-0Rp"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="allowNotificationsSwitch" destination="K3p-bC-QtN" id="TBD-mx-LvU"/>
+                        <outlet property="continuosTimeElapsedSwitch" destination="xhM-Qh-gEM" id="vHh-jo-L2h"/>
+                        <outlet property="useAboutToExpireSwitch" destination="ne9-CK-wcV" id="OB5-m0-imj"/>
+                        <outlet property="useExpiredTimeSwitch" destination="IXV-ku-uBg" id="reI-G8-bLs"/>
+                        <outlet property="useTimeElapsedSwitch" destination="xPW-Td-jbX" id="FAP-lO-9zC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hil-7Z-tz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

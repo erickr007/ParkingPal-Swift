@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-#platform :ios, '9.0'
+platform :ios, '11.2'
 
 target 'ParkingPal' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -10,7 +10,7 @@ target 'ParkingPal' do
     pod 'SwiftyJSON'
     pod 'SwipeCellKit'
     pod 'SVProgressHUD'
-    pod 'ArcGIS-Runtime-SDK-iOS', '100.2.1' 
+    pod 'ArcGIS-Runtime-SDK-iOS', '100.2.1'
 
   target 'ParkingPalTests' do
     inherit! :search_paths

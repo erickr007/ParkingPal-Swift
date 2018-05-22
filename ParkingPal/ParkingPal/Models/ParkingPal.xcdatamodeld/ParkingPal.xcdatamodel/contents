@@ -23,6 +23,7 @@
         <attribute name="timePriorToExpiration" optional="YES" attributeType="Integer 32" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="usePriorToExpiration" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="useTimeElapsed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="useTimeExpired" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="ParkingSpace" representedClassName=".ParkingSpace" syncable="YES" codeGenerationType="class">
         <attribute name="expireTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -44,7 +45,7 @@
         <element name="Location" positionX="-45" positionY="0" width="128" height="165"/>
         <element name="ParkingSpace" positionX="-45" positionY="54" width="128" height="195"/>
         <element name="ParkingSpaceSuffix" positionX="-27" positionY="81" width="128" height="30"/>
-        <element name="NotificationSettings" positionX="-36" positionY="99" width="128" height="135"/>
+        <element name="NotificationSettings" positionX="-36" positionY="99" width="128" height="150"/>
         <element name="Notification" positionX="-27" positionY="108" width="128" height="105"/>
     </elements>
 </model>

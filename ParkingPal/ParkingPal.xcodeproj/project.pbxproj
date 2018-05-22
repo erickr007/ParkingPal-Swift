@@ -36,6 +36,7 @@
 		074417FE204D56EB0031F8BF /* ParkingPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074417FD204D56EB0031F8BF /* ParkingPalTests.swift */; };
 		07441809204D56EB0031F8BF /* ParkingPalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07441808204D56EB0031F8BF /* ParkingPalUITests.swift */; };
 		074418442056D5D00031F8BF /* MapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074418432056D5D00031F8BF /* MapFilterViewController.swift */; };
+		07AB702A20B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */; };
 		36B1BE8C37CE8B6F79F8018F /* Pods_ParkingPalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC0C6F44B507715B6A0ED24 /* Pods_ParkingPalTests.framework */; };
 		43FB723788E2F07911FC8D4D /* Pods_ParkingPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDAB6AF824CF837DDB8C1C6 /* Pods_ParkingPal.framework */; };
 		BBBFAE6305B346AB3FCFC0E1 /* Pods_ParkingPalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A87216E2B757C1B280097D /* Pods_ParkingPalUITests.framework */; };
@@ -94,6 +95,7 @@
 		07441808204D56EB0031F8BF /* ParkingPalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingPalUITests.swift; sourceTree = "<group>"; };
 		0744180A204D56EB0031F8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		074418432056D5D00031F8BF /* MapFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewController.swift; sourceTree = "<group>"; };
+		07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinuteSecondPickerViewController.swift; sourceTree = "<group>"; };
 		26EDA0062E7111C8C39AB5D3 /* Pods-ParkingPalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingPalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkingPalTests/Pods-ParkingPalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29E36CD108C645B5F169EC0E /* Pods-ParkingPal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingPal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkingPal/Pods-ParkingPal.release.xcconfig"; sourceTree = "<group>"; };
 		2FDAB6AF824CF837DDB8C1C6 /* Pods_ParkingPal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkingPal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +218,7 @@
 				07137E45209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift */,
 				07137E49209ADBD500815FE0 /* BrowseLocationsTableViewController.swift */,
 				07137E5120AB02BE00815FE0 /* NotifcationsSettingsViewController.swift */,
+				07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				07080FBE206BF63400A8B4C7 /* HistoryTableViewController.swift in Sources */,
 				07137E482099AAAD00815FE0 /* ParkingSpace + Extensions.swift in Sources */,
 				07137E5220AB02BE00815FE0 /* NotifcationsSettingsViewController.swift in Sources */,
+				07AB702A20B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift in Sources */,
 				07080FB8206A260A00A8B4C7 /* ParkingDetailsViewController.swift in Sources */,
 				07080FC420808B0800A8B4C7 /* SetLocationDetailsTableViewController.swift in Sources */,
 				074418442056D5D00031F8BF /* MapFilterViewController.swift in Sources */,
@@ -761,6 +765,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WHQCLB3Q85;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwipeCellKit\"",
+					"\"${PODS_ROOT}/ArcGIS-Runtime-SDK-iOS\"",
+				);
 				INFOPLIST_FILE = ParkingPal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erickeith.ParkingPal;
@@ -777,6 +790,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WHQCLB3Q85;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwipeCellKit\"",
+					"\"${PODS_ROOT}/ArcGIS-Runtime-SDK-iOS\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ArcGIS-Runtime-SDK-iOS\"",
+				);
 				INFOPLIST_FILE = ParkingPal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erickeith.ParkingPal;
