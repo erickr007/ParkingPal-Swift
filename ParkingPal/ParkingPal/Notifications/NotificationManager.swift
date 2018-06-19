@@ -13,12 +13,13 @@ protocol NotificationManagerDelegate{
     func updateParkingSpaceState(isExpired: Bool, space: ParkingSpace?)
 }
 
-class NoticationManager{
+class NotificationManager{
     
     var notificationSettings: NotificationSettings?
     var currentParkingSpace: ParkingSpace?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var managerTimer: Timer?
     
     public var isCurrentNotificationExpired: Bool = false
     
@@ -41,6 +42,12 @@ class NoticationManager{
          */
     }
     
+    @objc func runNotifications(){
+        checkIfNotificationExpired()
+        checkIfNotificationAboutToExpire()
+        checkIfTimeElapsed()
+    }
+    
     func isParkingSpaceUsingExpiration() -> Bool{
         if currentParkingSpace == nil {
             return false
@@ -53,17 +60,14 @@ class NoticationManager{
         return true
     }
     
-    func checkIfNotificationExpired(){
+    func checkIfNotificationExpired() -> Bool{
         if !isParkingSpaceUsingExpiration() {
-            return
+            return false
         }
         
-        if let settings = notificationSettings{
+        if let settings = notificationSettings, let expireTime = currentParkingSpace?.expireTime, let space = currentParkingSpace{
             
             if settings.isAllowed && settings.useTimeExpired{
-                
-                if let expireTime = currentParkingSpace?.expireTime{
-                    let space = currentParkingSpace!
                     
                     if Date() >= expireTime{
                         //get previously sent time expired notifications
@@ -75,6 +79,7 @@ class NoticationManager{
                         if notifications == nil || notifications?.count == 0{
                             //SEND NOTIFICATION HERE
                             CoreDataManager.addNotification(space: space, isTimeExpired: true)
+                            return true
                         }
                         else{
                             
@@ -86,23 +91,28 @@ class NoticationManager{
                             if(lastNotificationTime < expireTime.timeIntervalSince1970){
                                 //SEND NOTIFICATION HERE
                                 CoreDataManager.addNotification(space: space, isTimeExpired: true)
+                                return true
                             }
                         }
                         
                     }
-                    
-                }
+                  
             }
         }
+        
+        return false
     }
     
-    func checkIfNotificationAboutToExpire(){
-        if let expireTime = currentParkingSpace?.expireTime, let notifSettings = notificationSettings{
-            let space = currentParkingSpace!
+    func checkIfNotificationAboutToExpire() -> Bool{
+        if let expireTime = currentParkingSpace?.expireTime, let settings = notificationSettings, let space = currentParkingSpace{
+            
+            if settings.isAllowed == false{
+                return false
+            }
             
             //nothing to send if expired date has already passed
             if expireTime <= Date(){
-                return
+                return false
             }
             
             //get previously sent time expired notifications
@@ -111,30 +121,34 @@ class NoticationManager{
             })
             
             if notifications == nil || notifications?.count == 0{
-                let expireBuffer = TimeInterval(notifSettings.timePriorToExpiration) * -1
+                let expireBuffer = TimeInterval(settings.timePriorToExpiration * 60) * -1
                 let expireThreshold = expireTime.addingTimeInterval(TimeInterval(expireBuffer))
                 
                 if(Date() >= expireThreshold){
                     //SEND NOTIFICATION HERE
                     CoreDataManager.addNotification(space: space, isTimeExpired: true)
+                    return true
                 }
             }
         }
+        
+        return false
     }
     
-    func checkIfTimeElapsed(){
-        if let expireTime = currentParkingSpace?.expireTime{
-            let space = currentParkingSpace!
+    func checkIfTimeElapsed() -> Bool{
+        if let expireTime = currentParkingSpace?.expireTime, let settings = notificationSettings,let space = currentParkingSpace, let timeIn = space.timeIn, let isContinuous = notificationSettings?.isTimeElapsedRepeating{
+            
+            if settings.isAllowed == false{
+                return false
+            }
             
             //do not send TimeElapsed notification on expired space
             if expireTime <= Date(){
-                return
+                return false
             }
             
-        if let settings = notificationSettings{
             if settings.useTimeElapsed{
                 
-                if let timeIn = space.timeIn{
                     let elapseTime = timeIn.timeIntervalSince1970 + TimeInterval(settings.timeElapsed * 60)//addingTimeInterval(TimeInterval(settings.timeElapsed))
                     
                     //get previously sent time elapsed notifications
@@ -147,9 +161,9 @@ class NoticationManager{
                         
                             //SEND NEW ELAPSED NOTIFICATION
                             CoreDataManager.addNotification(space: space, isTimeExpired: false)
-                        
+                        return true
                     }
-                    else if let isContinuous = notificationSettings?.isTimeElapsedRepeating {
+                    else {
                         var notifs: [Notification] = notifications as! [Notification]
                         notifs.reverse()
                         
@@ -162,23 +176,24 @@ class NoticationManager{
                             
                             //SEND NOTIFICATION
                             CoreDataManager.addNotification(space: space, isTimeExpired: false)
-                            
+                            return true
                         }
                         
                     }
-                }
+                
                 
             }
         }
-        }
+            return false
     }
     
     func startNotifications(){
+        managerTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runNotifications), userInfo: nil, repeats: true)
         
     }
     
     func stopNotifications(){
-        
+        managerTimer?.invalidate()
     }
     
 }
