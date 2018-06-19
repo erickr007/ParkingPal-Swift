@@ -98,4 +98,26 @@ class CoreDataManager{
             print("Error saving context: \(error)")
         }
     }
+    
+    
+    //MARK - Notifications
+    //*************************
+    
+    static func getLastNotificationSent(){
+        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+        
+        
+    }
+    
+    static func addNotification(space: ParkingSpace, isTimeExpired: Bool){
+        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+        
+        let notification = Notification(context: context)
+        notification.dateCreated = Date()
+        notification.forTimeExpired = isTimeExpired
+        notification.forTimeElapsed = !isTimeExpired
+        notification.notificationParkingSpace = space
+        
+        saveContext()
+    }
 }
