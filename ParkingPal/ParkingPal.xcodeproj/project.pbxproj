@@ -39,6 +39,7 @@
 		07AB702A20B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */; };
 		07AB702D20BC8716006DBCD7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB702C20BC8716006DBCD7 /* NotificationManager.swift */; };
 		07F3466920D18E54007DB26C /* NotificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F3466820D18E54007DB26C /* NotificationStatus.swift */; };
+		07F3467920EB0BC6007DB26C /* HistoryDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F3467820EB0BC6007DB26C /* HistoryDetailsTableViewController.swift */; };
 		36B1BE8C37CE8B6F79F8018F /* Pods_ParkingPalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC0C6F44B507715B6A0ED24 /* Pods_ParkingPalTests.framework */; };
 		43FB723788E2F07911FC8D4D /* Pods_ParkingPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDAB6AF824CF837DDB8C1C6 /* Pods_ParkingPal.framework */; };
 		BBBFAE6305B346AB3FCFC0E1 /* Pods_ParkingPalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A87216E2B757C1B280097D /* Pods_ParkingPalUITests.framework */; };
@@ -100,6 +101,7 @@
 		07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinuteSecondPickerViewController.swift; sourceTree = "<group>"; };
 		07AB702C20BC8716006DBCD7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		07F3466820D18E54007DB26C /* NotificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStatus.swift; sourceTree = "<group>"; };
+		07F3467820EB0BC6007DB26C /* HistoryDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailsTableViewController.swift; sourceTree = "<group>"; };
 		26EDA0062E7111C8C39AB5D3 /* Pods-ParkingPalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingPalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkingPalTests/Pods-ParkingPalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29E36CD108C645B5F169EC0E /* Pods-ParkingPal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingPal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkingPal/Pods-ParkingPal.release.xcconfig"; sourceTree = "<group>"; };
 		2FDAB6AF824CF837DDB8C1C6 /* Pods_ParkingPal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkingPal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 				07137E49209ADBD500815FE0 /* BrowseLocationsTableViewController.swift */,
 				07137E5120AB02BE00815FE0 /* NotifcationsSettingsViewController.swift */,
 				07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */,
+				07F3467820EB0BC6007DB26C /* HistoryDetailsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				07137E3E208E68AE00815FE0 /* SpaceFloorViewController.swift in Sources */,
 				073E48DA20864FF200BE3BB9 /* SwipeableTableViewController.swift in Sources */,
 				07137E4C209ADD3A00815FE0 /* BrowseLocationTableViewCell.swift in Sources */,
+				07F3467920EB0BC6007DB26C /* HistoryDetailsTableViewController.swift in Sources */,
 				07137E402092116000815FE0 /* SpaceExpirationViewController.swift in Sources */,
 				07080FBC206B9BF100A8B4C7 /* IdentifyViewController.swift in Sources */,
 				07137E46209774F000815FE0 /* ActiveParkingSpaceTableViewController.swift in Sources */,

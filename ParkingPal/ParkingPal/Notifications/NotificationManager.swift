@@ -136,6 +136,9 @@ class NotificationManager{
     }
     
     func checkIfTimeElapsed() -> Bool{
+        guard let exTime = currentParkingSpace?.expireTime else {
+            return false
+        }
         if let expireTime = currentParkingSpace?.expireTime, let settings = notificationSettings,let space = currentParkingSpace, let timeIn = space.timeIn, let isContinuous = notificationSettings?.isTimeElapsedRepeating{
             
             if settings.isAllowed == false{

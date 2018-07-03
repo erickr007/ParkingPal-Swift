@@ -14,6 +14,7 @@ class HistoryTableViewController: SwipeableTableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var parkingSpaceList: [ParkingSpace] = [ParkingSpace]()
+    var selectedSpace: ParkingSpace? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,13 @@ class HistoryTableViewController: SwipeableTableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "goToHistoryDetails"){
+            let historyDetailsVC = segue.destination as! HistoryDetailsTableViewController
+            historyDetailsVC.parkingSpace = selectedSpace
+        }
     }
     
     
@@ -92,7 +100,9 @@ class HistoryTableViewController: SwipeableTableViewController {
     //***************************************
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSpace = parkingSpaceList[indexPath.row]
         
+        performSegue(withIdentifier: "goToHistoryDetails", sender: self)
     }
     
     
