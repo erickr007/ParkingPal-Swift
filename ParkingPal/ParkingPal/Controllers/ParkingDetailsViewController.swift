@@ -20,7 +20,8 @@ class ParkingDetailsViewController: UIViewController, ParkingDetailsTableDelegat
     
     //constants
     
-    //variable properties
+    //variable propertiesf
+    var coreDataManager: CoreDataManager? = nil
     var delegate: BaseLocationTrackingProtocol? = nil
     private var detailsTableVC: ParkingDetailsTableTableViewController? = nil
     
@@ -29,6 +30,7 @@ class ParkingDetailsViewController: UIViewController, ParkingDetailsTableDelegat
         
         //- hide control and display progresshud
         
+        coreDataManager = CoreDataManager(container: (UIApplication.shared.delegate as! AppDelegate).persistentContainer)
         SVProgressHUD.show()
         
     }
@@ -48,7 +50,7 @@ class ParkingDetailsViewController: UIViewController, ParkingDetailsTableDelegat
             detailsTableVC = segue.destination as? ParkingDetailsTableTableViewController
             detailsTableVC?.delegate = self
             
-            let activeParkingSpace = CoreDataManager.getActiveParkingSpace()
+            let activeParkingSpace = coreDataManager?.getActiveParkingSpace()
             detailsTableVC?.activeParkingSpace = activeParkingSpace
             detailsTableVC?.currentLocation = currentLocation
         }

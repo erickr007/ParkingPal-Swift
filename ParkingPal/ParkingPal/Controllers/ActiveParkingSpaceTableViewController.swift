@@ -15,13 +15,15 @@ class ActiveParkingSpaceTableViewController: UITableViewController {
     @IBOutlet weak var parkingExpirationLabel: UILabel!
     @IBOutlet weak var parkingAddressLabel: UILabel!
     
+    var coreDataManager: CoreDataManager? = nil
     var currentParkingSpace: ParkingSpace? = nil
     
     var delegate: BaseLocationTrackingProtocol? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        coreDataManager = CoreDataManager(container: (UIApplication.shared.delegate as! AppDelegate).persistentContainer)
         loadSpaceInfo()
     }
 
@@ -65,7 +67,7 @@ class ActiveParkingSpaceTableViewController: UITableViewController {
     //*******************************
     
     @IBAction func stopTrackingTouched(_ sender: Any) {
-        CoreDataManager.stopTrackingLocation()
+        coreDataManager?.stopTrackingLocation()
         delegate?.stopTrackingLocation()
         
         navigationController?.popViewController(animated: true)

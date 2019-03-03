@@ -12,11 +12,21 @@ import UIKit
 
 class CoreDataManager{
     
+    let persistentContainer: NSPersistentContainer
+    
+    init(container: NSPersistentContainer){
+        persistentContainer = container
+    }
+    
+    lazy var backgroundContext: NSManagedObjectContext = {
+        return self.persistentContainer.newBackgroundContext()
+    }()
+    
     //MARK - ParkingSpace Methods
     //******************************
     
-    static func getActiveParkingSpace() -> ParkingSpace?{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func getActiveParkingSpace() -> ParkingSpace?{
+        let context = persistentContainer.viewContext//(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         var parkingSpace : ParkingSpace? = nil
         
         let request : NSFetchRequest<ParkingSpace> = ParkingSpace.fetchRequest()
@@ -34,14 +44,14 @@ class CoreDataManager{
         return parkingSpace
     }
     
-    static func startTrackingLocation(space: ParkingSpace){
+    func startTrackingLocation(space: ParkingSpace){
         space.isActive = true
         space.timeIn = Date.init()
         
         saveContext()
     }
     
-    static func stopTrackingLocation(){
+    func stopTrackingLocation(){
         let activeParkingSpace = getActiveParkingSpace()
         activeParkingSpace?.isActive = false
         activeParkingSpace?.timeOut = Date.init()
@@ -52,8 +62,8 @@ class CoreDataManager{
     //MARK - NotificationSettings
     //*********************************
     
-    static func getNotificationSettnings() -> NotificationSettings?{
-        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+    func getNotificationSettnings() -> NotificationSettings?{
+        let context = persistentContainer.viewContext//((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
         var notificationSettings: NotificationSettings? = nil
         let request : NSFetchRequest<NotificationSettings> = NotificationSettings.fetchRequest()
         
@@ -63,8 +73,6 @@ class CoreDataManager{
             if notificationSettings == nil{
                 initNotificationSettings()
             }
-            
-            notificationSettings = try context.fetch(request).first
         }
         catch{
             print("Error retrieving NotificationSettings: \(error)")
@@ -74,8 +82,8 @@ class CoreDataManager{
     }
     
     
-    static func initNotificationSettings(){
-        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+    func initNotificationSettings(){
+        let context = persistentContainer.viewContext//((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
         
         let notificationSettings: NotificationSettings = NotificationSettings(context: context)
         
@@ -88,29 +96,21 @@ class CoreDataManager{
         saveContext()
     }
     
-    
-    static func saveContext(){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        do{
-            try context.save()
-        }
-        catch{
-            print("Error saving context: \(error)")
-        }
+    func getContext() -> NSManagedObjectContext{
+        return persistentContainer.viewContext
     }
-    
     
     //MARK - Notifications
     //*************************
     
-    static func getLastNotificationSent(){
-        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+    func getLastNotificationSent(){
+        let context = persistentContainer.viewContext//((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
         
         
     }
     
-    static func addNotification(space: ParkingSpace, isTimeExpired: Bool){
-        let context = ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+    func addNotification(space: ParkingSpace, isTimeExpired: Bool){
+        let context = persistentContainer.viewContext//((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
         
         let notification = Notification(context: context)
         notification.dateCreated = Date()
@@ -120,4 +120,15 @@ class CoreDataManager{
         
         saveContext()
     }
+    
+    func saveContext(){
+        let context = persistentContainer.viewContext
+        do{
+            try backgroundContext.save()
+        }
+        catch{
+            print("Error saving context: \(error)")
+        }
+    }
+    
 }

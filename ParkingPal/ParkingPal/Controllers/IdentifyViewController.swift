@@ -25,12 +25,14 @@ class IdentifyViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var setLocationButton: UIButton!
     
+    var coreDataManager: CoreDataManager? = nil
     var delegate: IdentifyViewDelegate? = nil
     var isActiveLocationSet = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        coreDataManager = CoreDataManager(container: (UIApplication.shared.delegate as! AppDelegate).persistentContainer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +56,7 @@ class IdentifyViewController: UIViewController {
             delegate?.setLocation()
         }
         else{
-            CoreDataManager.stopTrackingLocation()
+            coreDataManager?.stopTrackingLocation()
             delegate?.stopTrackingLocation()
         }
     }

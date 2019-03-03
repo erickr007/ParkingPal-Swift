@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //start monitoring for notifications
-        nManager = NotificationManager.init()
+        nManager = NotificationManager.init(container: persistentContainer)
         nManager?.startNotifications()
         
         return true

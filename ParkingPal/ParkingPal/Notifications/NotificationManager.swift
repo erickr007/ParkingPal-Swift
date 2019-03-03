@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol NotificationManagerDelegate{
     func updateParkingSpaceState(isExpired: Bool, space: ParkingSpace?)
@@ -18,14 +19,16 @@ class NotificationManager{
     var notificationSettings: NotificationSettings?
     var currentParkingSpace: ParkingSpace?
     
+    let coreDataManager: CoreDataManager
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var managerTimer: Timer?
     
     public var isCurrentNotificationExpired: Bool = false
     
-    init (){
-        notificationSettings = CoreDataManager.getNotificationSettnings()
-        currentParkingSpace = CoreDataManager.getActiveParkingSpace()
+    init (container: NSPersistentContainer){
+        coreDataManager = CoreDataManager.init(container: container)
+        notificationSettings = coreDataManager.getNotificationSettnings()
+        currentParkingSpace = coreDataManager.getActiveParkingSpace()
         
         /*
          NotificationManager checklist:
@@ -78,7 +81,7 @@ class NotificationManager{
                         //send expire notification if none previously sent
                         if notifications == nil || notifications?.count == 0{
                             //SEND NOTIFICATION HERE
-                            CoreDataManager.addNotification(space: space, isTimeExpired: true)
+                            coreDataManager.addNotification(space: space, isTimeExpired: true)
                             return true
                         }
                         else{
@@ -90,7 +93,7 @@ class NotificationManager{
                             //previously sent about to expire notification sent
                             if(lastNotificationTime < expireTime.timeIntervalSince1970){
                                 //SEND NOTIFICATION HERE
-                                CoreDataManager.addNotification(space: space, isTimeExpired: true)
+                                coreDataManager.addNotification(space: space, isTimeExpired: true)
                                 return true
                             }
                         }
@@ -126,7 +129,7 @@ class NotificationManager{
                 
                 if(Date() >= expireThreshold){
                     //SEND NOTIFICATION HERE
-                    CoreDataManager.addNotification(space: space, isTimeExpired: true)
+                    coreDataManager.addNotification(space: space, isTimeExpired: true)
                     return true
                 }
             }
@@ -166,7 +169,7 @@ class NotificationManager{
                     if elapseTime > Date().timeIntervalSince1970 && (notifications == nil || notifications?.count == 0){
                         
                             //SEND NEW ELAPSED NOTIFICATION
-                            CoreDataManager.addNotification(space: space, isTimeExpired: false)
+                            coreDataManager.addNotification(space: space, isTimeExpired: false)
                         return true
                     }
                     else {
@@ -181,7 +184,7 @@ class NotificationManager{
                         if isContinuous && lastNotif! >= TimeInterval(elapsedThreshold){
                             
                             //SEND NOTIFICATION
-                            CoreDataManager.addNotification(space: space, isTimeExpired: false)
+                            coreDataManager.addNotification(space: space, isTimeExpired: false)
                             return true
                         }
                         

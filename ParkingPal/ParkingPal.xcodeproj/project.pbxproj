@@ -38,6 +38,9 @@
 		074418442056D5D00031F8BF /* MapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074418432056D5D00031F8BF /* MapFilterViewController.swift */; };
 		07AB702A20B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */; };
 		07AB702D20BC8716006DBCD7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB702C20BC8716006DBCD7 /* NotificationManager.swift */; };
+		07BAB15F222B42330072B991 /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAB15E222B42330072B991 /* NotificationTests.swift */; };
+		07BAB164222B54130072B991 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07137E4D209B290300815FE0 /* CoreDataManager.swift */; };
+		07BAB165222B54860072B991 /* ParkingPal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 074417EC204D56EA0031F8BF /* ParkingPal.xcdatamodeld */; };
 		07F3466920D18E54007DB26C /* NotificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F3466820D18E54007DB26C /* NotificationStatus.swift */; };
 		07F3467920EB0BC6007DB26C /* HistoryDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F3467820EB0BC6007DB26C /* HistoryDetailsTableViewController.swift */; };
 		36B1BE8C37CE8B6F79F8018F /* Pods_ParkingPalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC0C6F44B507715B6A0ED24 /* Pods_ParkingPalTests.framework */; };
@@ -100,6 +103,7 @@
 		074418432056D5D00031F8BF /* MapFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFilterViewController.swift; sourceTree = "<group>"; };
 		07AB702920B48A36006DBCD7 /* HourMinuteSecondPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourMinuteSecondPickerViewController.swift; sourceTree = "<group>"; };
 		07AB702C20BC8716006DBCD7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		07BAB15E222B42330072B991 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		07F3466820D18E54007DB26C /* NotificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStatus.swift; sourceTree = "<group>"; };
 		07F3467820EB0BC6007DB26C /* HistoryDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailsTableViewController.swift; sourceTree = "<group>"; };
 		26EDA0062E7111C8C39AB5D3 /* Pods-ParkingPalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkingPalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParkingPalTests/Pods-ParkingPalTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 			children = (
 				074417FD204D56EB0031F8BF /* ParkingPalTests.swift */,
 				074417FF204D56EB0031F8BF /* Info.plist */,
+				07BAB15E222B42330072B991 /* NotificationTests.swift */,
 			);
 			path = ParkingPalTests;
 			sourceTree = "<group>";
@@ -314,8 +319,6 @@
 				074417F5204D56EB0031F8BF /* Sources */,
 				074417F6204D56EB0031F8BF /* Frameworks */,
 				074417F7204D56EB0031F8BF /* Resources */,
-				DCAC14F19097D03BA3B415F2 /* [CP] Embed Pods Frameworks */,
-				8DFF46E83D3BA7A10E1AB2E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,8 +338,6 @@
 				07441800204D56EB0031F8BF /* Sources */,
 				07441801204D56EB0031F8BF /* Frameworks */,
 				07441802204D56EB0031F8BF /* Resources */,
-				9E50AF615D5E789776784DF6 /* [CP] Embed Pods Frameworks */,
-				36DD3A0DE224D79527C072F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -433,7 +434,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ArcGIS.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -456,36 +457,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		36DD3A0DE224D79527C072F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkingPalUITests/Pods-ParkingPalUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8DFF46E83D3BA7A10E1AB2E3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkingPalTests/Pods-ParkingPalTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9504C6E48D1218E887DA3B19 /* [CP] Embed Pods Frameworks */ = {
@@ -516,21 +487,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkingPal/Pods-ParkingPal-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E50AF615D5E789776784DF6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkingPalUITests/Pods-ParkingPalUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BEDAC94FA558F100CB6BC59E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,21 +503,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DCAC14F19097D03BA3B415F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ParkingPalTests/Pods-ParkingPalTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F09395D8238BCB2B9CB28E7F /* [CP] Check Pods Manifest.lock */ = {
@@ -624,6 +565,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BAB165222B54860072B991 /* ParkingPal.xcdatamodeld in Sources */,
+				07BAB164222B54130072B991 /* CoreDataManager.swift in Sources */,
+				07BAB15F222B42330072B991 /* NotificationTests.swift in Sources */,
 				074417FE204D56EB0031F8BF /* ParkingPalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

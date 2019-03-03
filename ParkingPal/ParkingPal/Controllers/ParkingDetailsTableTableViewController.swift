@@ -22,6 +22,7 @@ class ParkingDetailsTableTableViewController: UITableViewController, SetLocation
     @IBOutlet weak var parkingType: UILabel!
     @IBOutlet weak var setLocationButton: UIButton!
     
+    var coreDataManager: CoreDataManager? = nil
     var currentLocation: Location? = nil
     var activeParkingSpace: ParkingSpace? = nil
     var trackingCurrentLocation = false
@@ -32,8 +33,8 @@ class ParkingDetailsTableTableViewController: UITableViewController, SetLocation
         super.viewDidLoad()
 
         //SVProgressHUD.show()
-        
-        activeParkingSpace = CoreDataManager.getActiveParkingSpace()
+        coreDataManager = CoreDataManager(container: (UIApplication.shared.delegate as! AppDelegate).persistentContainer)
+        activeParkingSpace = coreDataManager?.getActiveParkingSpace()
         loadData()
     }
 
@@ -69,7 +70,7 @@ class ParkingDetailsTableTableViewController: UITableViewController, SetLocation
         if trackingCurrentLocation == true{
             activeParkingSpace?.isActive = false
             
-            CoreDataManager.saveContext()
+            coreDataManager?.saveContext()
             
             delegate?.locationTrackingStopped()
             

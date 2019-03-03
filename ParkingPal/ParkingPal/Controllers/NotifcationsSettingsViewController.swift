@@ -18,10 +18,15 @@ class NotifcationsSettingsViewController: UITableViewController, HourMinutePicke
     @IBOutlet weak var continuosTimeElapsedSwitch: UISwitch!
     @IBOutlet weak var useExpiredTimeSwitch: UISwitch!
     @IBOutlet weak var useAboutToExpireSwitch: UISwitch!
+    @IBOutlet weak var timeElapsedLabel: UILabel!
+    @IBOutlet weak var timePriorToExpirationLabel: UILabel!
+    
+    var coreDataManager: CoreDataManager? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        coreDataManager = CoreDataManager(container: (UIApplication.shared.delegate as! AppDelegate).persistentContainer)
         loadNotificationSettings()
     }
 
@@ -38,10 +43,32 @@ class NotifcationsSettingsViewController: UITableViewController, HourMinutePicke
             }
         }
     }
+    /*
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let index = indexPath.row
+        
+        if(indexPath.row < 2){
+            return 44
+        }
+        else{
+            return 0
+        }
+    }*/
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(section == 0){
+            return 1
+        }
+        else if(section == 1){
+            return 3
+        }
+        else{
+            return 1
+        }
+    }
     
     func loadNotificationSettings(){
-        notificationSettings = CoreDataManager.getNotificationSettnings()
-        
+        notificationSettings = coreDataManager?.getNotificationSettnings()
         
         if let isAllowed = notificationSettings?.isAllowed {
             allowNotificationsSwitch.isOn = isAllowed
@@ -57,6 +84,13 @@ class NotifcationsSettingsViewController: UITableViewController, HourMinutePicke
             continuosTimeElapsedSwitch.isOn = useContinuousTime
         }
         
+        if let timeElapsed = notificationSettings?.timeElapsed {
+            timeElapsedLabel.text = String(timeElapsed)
+        }
+        
+        if let timePriorToExpiration = notificationSettings?.timePriorToExpiration{
+            timePriorToExpirationLabel.text = String(timePriorToExpiration)
+        }
         
         // Time Expired
         
@@ -100,7 +134,7 @@ class NotifcationsSettingsViewController: UITableViewController, HourMinutePicke
             notificationSettings?.usePriorToExpiration = useAboutToExpireSwitch.isOn
         }
         
-        CoreDataManager.saveContext()
+        saveContext()
     }
     
 
@@ -108,7 +142,6 @@ class NotifcationsSettingsViewController: UITableViewController, HourMinutePicke
     //************************************
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
     }
 
@@ -125,6 +158,21 @@ class NotifcationsSettingsViewController: UITableViewController, HourMinutePicke
     
     func saveTimePicked(section: Int, hour: Int, minute: Int) {
         print("section: \(section), hour: \(hour), minute: \(minute)")
+        if(section == 1){
+            notificationSettings?.timeElapsed = Int32((minute * 60) + (hour * 3600))
+        }
+        else if(section == 2){
+            notificationSettings?.timePriorToExpiration = Int32((minute * 60) + (hour * 3600))
+        }
+        
+        //let time = notificationSettings?.timePriorToExpiration
+        
+        saveContext()
+        loadNotificationSettings()
+    }
+    
+    func saveContext(){
+        coreDataManager?.saveContext()
     }
     
 }

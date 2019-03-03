@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wSM-bG-Bn5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wSM-bG-Bn5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -272,6 +271,8 @@
                     <connections>
                         <outlet property="allowNotificationsSwitch" destination="K3p-bC-QtN" id="TBD-mx-LvU"/>
                         <outlet property="continuosTimeElapsedSwitch" destination="xhM-Qh-gEM" id="vHh-jo-L2h"/>
+                        <outlet property="timeElapsedLabel" destination="MIY-oN-Xoi" id="0uj-4p-Gft"/>
+                        <outlet property="timePriorToExpirationLabel" destination="9hX-5C-DE0" id="l5p-FJ-peh"/>
                         <outlet property="useAboutToExpireSwitch" destination="ne9-CK-wcV" id="OB5-m0-imj"/>
                         <outlet property="useExpiredTimeSwitch" destination="IXV-ku-uBg" id="reI-G8-bLs"/>
                         <outlet property="useTimeElapsedSwitch" destination="xPW-Td-jbX" id="FAP-lO-9zC"/>
@@ -754,7 +755,7 @@
                                         <rect key="frame" x="0.0" y="120" width="175" height="343"/>
                                         <subviews>
                                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1g-RO-nVB">
-                                                <rect key="frame" x="-0.5" y="0.0" width="175" height="343"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="343"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DZa-iW-D1Q">
                                                     <rect key="frame" x="0.0" y="0.0" width="175" height="343"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1071,7 +1072,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0v-nV-7VN">
-                                                    <rect key="frame" x="0.0" y="5" width="375" height="30"/>
+                                                    <rect key="frame" x="0.0" y="5" width="375" height="29.5"/>
                                                     <state key="normal" title="SET LOCATION"/>
                                                     <connections>
                                                         <action selector="setLocationTouched:" destination="30H-jY-cIH" eventType="touchUpInside" id="vIz-QX-9Fa"/>
@@ -1698,7 +1699,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIb-Ad-ex6">
-                                <rect key="frame" x="170" y="482" width="34" height="30"/>
+                                <rect key="frame" x="170.5" y="482" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="w95-la-bOQ" eventType="touchUpInside" id="SwJ-of-3Bb"/>

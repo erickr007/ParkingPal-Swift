@@ -25,11 +25,11 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
     
     //- constants
     private let parkingPalAPIUrl = "https://parkingpalapi.azurewebsites.net/"
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let graphicsOverlay = AGSGraphicsOverlay()
     private let spatialReference = AGSSpatialReference(wkid: 102100)
     
     //- variable properties
+    private var coreDataManager: CoreDataManager? = nil
     private var currentMapFilter : MapFilter? = nil
     private var activeParkingSpace : ParkingSpace? = nil
     private var currentLocations: [Location] = [Location](){
@@ -51,6 +51,8 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        coreDataManager = CoreDataManager(container: (UIApplication.shared.delegate as! AppDelegate).persistentContainer)
         
         navigationController?.navigationBar.isHidden = true
         
@@ -135,7 +137,7 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
     
     //MARK:  CoreData Methods
     //****************************
-    
+    /*
     func getActiveParkingSpace() -> ParkingSpace?{
         var parkingSpace : ParkingSpace? = nil
         
@@ -161,7 +163,7 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
         catch{
             print("Error save context data: \(error)")
         }
-    }
+    }*/
     
     
     //MARK: Menu Methods
@@ -195,7 +197,7 @@ class MapViewController: UIViewController, MapFilterDelegate, SetLocationDelegat
     //********************************
     
     func loadActiveParkingBar(){
-        activeParkingSpace = getActiveParkingSpace()
+        activeParkingSpace = coreDataManager?.getActiveParkingSpace()
         
         
         if activeParkingSpace != nil{
@@ -294,7 +296,7 @@ extension MapControllerIdentifyView : IdentifyViewDelegate{
     
     func stopTrackingLocation(){
         
-        activeParkingSpace = CoreDataManager.getActiveParkingSpace()
+        activeParkingSpace = coreDataManager?.getActiveParkingSpace()
         
         loadActiveParkingBar()
         
@@ -462,7 +464,7 @@ extension MapViewControllerRest{
     }
     
     func parkingLocation(from json: JSON) -> Location{
-        let location: Location = Location(context: context)
+        let location: Location = Location(context: coreDataManager!.getContext())
         
         location.address = json["ad"].string
         location.latitude = json["lt"].double!
